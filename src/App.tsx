@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { RepoInput } from "@/components/RepoInput";
 import { CommitChart } from "@/components/CommitChart";
 import { ContributorsChart } from "@/components/ContributorsChart";
-import { StarHistoryChart } from "@/components/StarHistoryChart";
 import { IssuesChart } from "@/components/IssuesChart";
 import { IssuesClosedChart } from "@/components/IssuesClosedChart";
 import { TokenInput } from "@/components/TokenInput";
@@ -71,6 +70,22 @@ export function App() {
           <TokenInput onTokenChange={handleTokenChange} />
         </header>
 
+        <section className="text-sm text-muted-foreground space-y-2">
+          <h2 className="font-medium text-foreground">Why GitBoard?</h2>
+          <p>
+            Choosing between open source libraries can be difficult. Many tools offer similar features,
+            making the decision seem straightforward. However, adopting a dead or dying project can
+            cause long-term problems—dependencies become deeply embedded in your app and are hard to
+            remove or replace.
+          </p>
+          <p>
+            GitHub doesn't make it easy to compare the vital signals of repositories: commit activity,
+            contributor trends, issue velocity, and more. GitBoard gives you a single page view of
+            these metrics so you can make informed decisions about which projects are actively
+            maintained and worth depending on.
+          </p>
+        </section>
+
         <RepoInput
           repos={repos}
           onAddRepo={handleAddRepo}
@@ -80,8 +95,6 @@ export function App() {
         <CommitChart key={`commits-${tokenVersion}`} repos={repos} />
 
         <ContributorsChart key={`contributors-${tokenVersion}`} repos={repos} />
-
-        <StarHistoryChart key={`stars-${tokenVersion}`} repos={repos} />
 
         <IssuesChart key={`issues-${tokenVersion}`} repos={repos} />
 
