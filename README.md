@@ -2,7 +2,7 @@
 
 Compare GitHub repositories to find the right one for your project.
 
-![GitBoard Screenshot](./screenshots/gitboard-main.png)
+![Commit Graph Screenshot](./screenshots/commits.png)
 
 ## Why GitBoard?
 
