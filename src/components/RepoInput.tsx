@@ -52,24 +52,30 @@ export function RepoInput({
   return (
     <div className="space-y-3">
       <div className="flex gap-2">
+        <label htmlFor="repo-input" className="sr-only">
+          Repository (owner/repo or GitHub URL)
+        </label>
         <Input
+          id="repo-input"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="owner/repo or GitHub URL"
           className="flex-1"
+          aria-describedby={error ? "repo-input-error" : undefined}
+          aria-invalid={error ? true : undefined}
         />
         <Button
           onClick={handleAdd}
           disabled={!inputValue.trim()}
           size="sm"
         >
-          <IconPlus className="size-4" />
+          <IconPlus className="size-4" aria-hidden="true" />
           Add
         </Button>
       </div>
 
-      {error && <p className="text-destructive text-xs">{error}</p>}
+      {error && <p id="repo-input-error" className="text-destructive text-xs" role="alert">{error}</p>}
 
       {repos.length > 0 && (
         <div className="flex flex-wrap gap-2">
@@ -84,8 +90,9 @@ export function RepoInput({
               <button
                 onClick={() => onRemoveRepo(index)}
                 className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={`Remove ${repo.owner}/${repo.name}`}
               >
-                <IconX className="size-3.5" />
+                <IconX className="size-3.5" aria-hidden="true" />
               </button>
             </div>
           ))}

@@ -175,13 +175,14 @@ export function IssuesChart({ repos }: IssuesChartProps) {
         )}
 
         {isLoading && (
-          <div className="flex h-[300px] items-center justify-center text-muted-foreground gap-2">
-            <IconLoader2 className="size-5 animate-spin" />
+          <div className="flex h-[300px] items-center justify-center text-muted-foreground gap-2" role="status" aria-live="polite">
+            <IconLoader2 className="size-5 animate-spin" aria-hidden="true" />
             <span>Loading issue data...</span>
           </div>
         )}
 
         {!isLoading && chartData.length > 0 && (
+          <div role="img" aria-label={`Line chart showing weekly issues opened over the last 52 weeks for ${repoKeys.join(", ")}`}>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
@@ -226,6 +227,7 @@ export function IssuesChart({ repos }: IssuesChartProps) {
               ))}
             </LineChart>
           </ResponsiveContainer>
+          </div>
         )}
 
         {!isLoading && chartData.length === 0 && repos.length > 0 && (

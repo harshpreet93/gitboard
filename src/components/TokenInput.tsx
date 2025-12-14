@@ -36,7 +36,7 @@ export function TokenInput({ onTokenChange }: TokenInputProps) {
   if (!isEditing) {
     return (
       <div className="flex items-center gap-3 rounded-lg border border-border bg-muted/50 px-4 py-2.5">
-        <IconKey className="size-4 text-foreground" />
+        <IconKey className="size-4 text-foreground" aria-hidden="true" />
         {hasToken ? (
           <>
             <span className="text-sm font-medium text-foreground">API token configured</span>
@@ -85,8 +85,12 @@ export function TokenInput({ onTokenChange }: TokenInputProps) {
 
   return (
     <div className="flex items-center gap-3 rounded-lg border border-border bg-muted/50 px-4 py-2.5">
-      <IconKey className="size-4 text-foreground" />
+      <IconKey className="size-4 text-foreground" aria-hidden="true" />
+      <label htmlFor="github-token" className="sr-only">
+        GitHub Personal Access Token
+      </label>
       <Input
+        id="github-token"
         type="password"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
@@ -103,16 +107,18 @@ export function TokenInput({ onTokenChange }: TokenInputProps) {
         size="sm"
         onClick={handleSave}
         className="h-8 w-8 p-0"
+        aria-label="Save token"
       >
-        <IconCheck className="size-4" />
+        <IconCheck className="size-4" aria-hidden="true" />
       </Button>
       <Button
         variant="ghost"
         size="sm"
         onClick={handleCancel}
         className="h-8 w-8 p-0"
+        aria-label="Cancel"
       >
-        <IconX className="size-4" />
+        <IconX className="size-4" aria-hidden="true" />
       </Button>
     </div>
   );

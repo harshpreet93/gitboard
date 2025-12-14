@@ -60,7 +60,7 @@ export function App() {
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="mx-auto max-w-4xl space-y-6">
-        <header className="flex items-start justify-between gap-4">
+        <header className="flex items-start justify-between gap-4" role="banner">
           <div>
             <h1 className="text-xl font-semibold">GitBoard</h1>
             <p className="text-muted-foreground text-sm">
@@ -70,7 +70,8 @@ export function App() {
           <TokenInput onTokenChange={handleTokenChange} />
         </header>
 
-        <section className="text-sm text-muted-foreground space-y-2">
+        <main className="space-y-6">
+          <section className="text-sm text-muted-foreground space-y-2">
           <h2 className="font-medium text-foreground">Why GitBoard?</h2>
           <p>
             Choosing between open source libraries can be difficult. Many tools offer similar features,
@@ -110,6 +111,7 @@ export function App() {
         <IssuesChart key={`issues-${tokenVersion}`} repos={repos} />
 
         <IssuesClosedChart key={`issues-closed-${tokenVersion}`} repos={repos} />
+        </main>
       </div>
     </div>
   );
