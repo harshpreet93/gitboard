@@ -2,6 +2,8 @@
 
 Compare GitHub repositories to find the right one for your project.
 
+**[Try it live →](https://gitboard.pages.dev/)**
+
 ![Commit Graph Screenshot](./screenshots/commits.png)
 ![Contributors Graph Screenshot](./screenshots/contributors.png)
 ![Opened Issues Graph Screenshot](./screenshots/open_issues.png)
